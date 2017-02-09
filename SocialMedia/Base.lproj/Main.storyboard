@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +21,112 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eic-oX-EF6" colorLabel="IBBuiltInLabel-Orange">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devslopes-logo" translatesAutoresizingMaskIntoConstraints="NO" id="LRt-ZU-as4">
+                                        <rect key="frame" x="113" y="28" width="150" height="94"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="35m-Ri-IbB"/>
+                                    <constraint firstItem="LRt-ZU-as4" firstAttribute="centerY" secondItem="eic-oX-EF6" secondAttribute="centerY" id="ZA3-Jd-twr"/>
+                                    <constraint firstItem="LRt-ZU-as4" firstAttribute="centerX" secondItem="eic-oX-EF6" secondAttribute="centerX" id="xKO-P7-aae"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfi-NH-dTR">
+                                <rect key="frame" x="0.0" y="592" width="375" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입을 한 적이 없다면, 새로운 계정이 생성됩니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="FCU-A8-rEk">
+                                        <rect key="frame" x="16" y="8" width="343" height="59"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.18823529411764706" green="0.24705882352941178" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="Jq6-MS-039"/>
+                                    <constraint firstAttribute="bottom" secondItem="FCU-A8-rEk" secondAttribute="bottom" constant="8" id="M8k-64-mjY"/>
+                                    <constraint firstItem="FCU-A8-rEk" firstAttribute="top" secondItem="Lfi-NH-dTR" secondAttribute="top" constant="8" id="O0o-nN-kb2"/>
+                                    <constraint firstAttribute="trailing" secondItem="FCU-A8-rEk" secondAttribute="trailing" constant="16" id="XdS-S3-huk"/>
+                                    <constraint firstItem="FCU-A8-rEk" firstAttribute="leading" secondItem="Lfi-NH-dTR" secondAttribute="leading" constant="16" id="o9f-e0-HvK"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 방법을 선택하세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHY-Ii-dMh">
+                                <rect key="frame" x="16" y="170" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Qc2-Gi-zDS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUd-8q-U3H">
+                                <rect key="frame" x="112.5" y="230" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.34509803921568627" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Y9A-Eu-TCp"/>
+                                    <constraint firstAttribute="width" constant="150" id="u7b-TR-D1q"/>
+                                </constraints>
+                                <state key="normal" image="f"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="aTG-xc-sXR">
+                                <rect key="frame" x="46" y="420" width="283" height="123"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jKX-Im-3d7">
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IXA-8u-rbU">
+                                        <rect key="frame" x="0.0" y="45" width="283" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-MA-UMh">
+                                        <rect key="frame" x="0.0" y="90" width="283" height="33"/>
+                                        <color key="backgroundColor" red="1" green="0.23921568627450979" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <state key="normal" title="로그인">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eic-oX-EF6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6zB-ph-kw1"/>
+                            <constraint firstAttribute="trailing" secondItem="eic-oX-EF6" secondAttribute="trailing" id="D0l-oM-yKj"/>
+                            <constraint firstItem="CHY-Ii-dMh" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Gi8-gU-RFt"/>
+                            <constraint firstItem="aTG-xc-sXR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kbb-2d-QAc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aTG-xc-sXR" secondAttribute="trailing" constant="30" id="OCJ-id-OwM"/>
+                            <constraint firstItem="Lfi-NH-dTR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WSA-tw-BCv"/>
+                            <constraint firstItem="aTG-xc-sXR" firstAttribute="top" secondItem="ZUd-8q-U3H" secondAttribute="bottom" constant="40" id="WjQ-ZY-8zn"/>
+                            <constraint firstItem="eic-oX-EF6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZLY-Gn-NaT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Lfi-NH-dTR" secondAttribute="bottom" id="Zjw-ND-plY"/>
+                            <constraint firstItem="CHY-Ii-dMh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bd8-2k-qo9"/>
+                            <constraint firstItem="CHY-Ii-dMh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gUr-JM-ddz"/>
+                            <constraint firstItem="CHY-Ii-dMh" firstAttribute="top" secondItem="eic-oX-EF6" secondAttribute="bottom" constant="20" id="hal-Iw-1Pl"/>
+                            <constraint firstAttribute="trailing" secondItem="Lfi-NH-dTR" secondAttribute="trailing" id="kjJ-xH-nX9"/>
+                            <constraint firstItem="ZUd-8q-U3H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lBT-yv-4GS"/>
+                            <constraint firstItem="aTG-xc-sXR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="mPr-v4-JOx"/>
+                            <constraint firstItem="ZUd-8q-U3H" firstAttribute="top" secondItem="CHY-Ii-dMh" secondAttribute="bottom" constant="40" id="tYp-Uu-Zko"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="devslopes-logo" width="150" height="94"/>
+        <image name="f" width="352" height="328"/>
+    </resources>
 </document>
