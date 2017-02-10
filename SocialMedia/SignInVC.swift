@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
 
@@ -20,12 +21,22 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("ID found in keyChain")
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
+    }
     func firebaseAuth(_ credential: FIRAuthCredential) {
         FIRAuth.auth()?.signIn(with: credential, completion: {(user, error) in
             if error != nil {
                 print("창남 - Unable to authenticate Firebase, Error: \(error)")
             } else {
                 print("창남 - Firebase authentication Success")
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                }
+                
             }
         })
     }
@@ -52,12 +63,18 @@ class SignInVC: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error == nil {
                     print("창남 - Firebase 이메일 로그인")
+                    if let user = user {
+                        self.completeSignIn(id: user.uid)
+                    }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: {(user, error) in
                         if error != nil {
                             print("창남 - 이메일 인증을 할 수 없습니다.")
                         } else {
                             print("창남 - Success authentication with Firebase")
+                            if let user = user {
+                                self.completeSignIn(id: user.uid)
+                            }
                         }
                     })
                 }
@@ -65,5 +82,11 @@ class SignInVC: UIViewController {
         }
     }
     
+    func completeSignIn(id: String) {
+        let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("창남 - Data Saved to keyChain result: \(keyChainResult)")
+        
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+    }
 }
 

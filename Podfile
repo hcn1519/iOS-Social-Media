@@ -11,10 +11,12 @@ target 'SocialMedia' do
     inherit! :search_paths
     # Pods for testing
   end
+  
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'FBSDKLoginKit'
-
+  pod 'SwiftKeychainWrapper'
+  
 end
