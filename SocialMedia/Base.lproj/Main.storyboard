@@ -98,6 +98,9 @@
                                         <state key="normal" title="로그인">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oRA-et-DnQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -122,6 +125,10 @@
                             <constraint firstItem="ZUd-8q-U3H" firstAttribute="top" secondItem="CHY-Ii-dMh" secondAttribute="bottom" constant="40" id="tYp-Uu-Zko"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="jKX-Im-3d7" id="fns-Bp-F6t"/>
+                        <outlet property="passwordField" destination="IXA-8u-rbU" id="dZC-tB-lTr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
