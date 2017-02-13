@@ -11,6 +11,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 import SwiftKeychainWrapper
+import FacebookLogin
 
 class SignInVC: UIViewController {
 
@@ -34,7 +35,8 @@ class SignInVC: UIViewController {
             } else {
                 print("창남 - Firebase authentication Success")
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["provider": user.providerID]
+                    self.completeSignIn(id: user.uid, userData: userData)
                 }
                 
             }
@@ -43,13 +45,18 @@ class SignInVC: UIViewController {
 
     @IBAction func facebookBtnTapped(_ sender: Any) {
         
-        let facebookLogin = FBSDKLoginManager()
-        
+        if FBSDKAccessToken.current() != nil {
+            FBSDKLoginManager().logOut()
+            return
+        }
+
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if error != nil {
                 print("창남 - Unable to login Facebook, Error: \(error)")
+                facebookLogin.logOut()
             } else if result?.isCancelled == true {
                 print("창남 - User canceled Facebook authentication")
+                facebookLogin.logOut()
             } else {
                 print("창남 - Facebook login success")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -64,7 +71,8 @@ class SignInVC: UIViewController {
                 if error == nil {
                     print("창남 - Firebase 이메일 로그인")
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: {(user, error) in
@@ -73,7 +81,8 @@ class SignInVC: UIViewController {
                         } else {
                             print("창남 - Success authentication with Firebase")
                             if let user = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -82,7 +91,9 @@ class SignInVC: UIViewController {
         }
     }
     
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        
         let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("창남 - Data Saved to keyChain result: \(keyChainResult)")
         
