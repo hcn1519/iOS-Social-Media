@@ -11,7 +11,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 import SwiftKeychainWrapper
-import FacebookLogin
 
 class SignInVC: UIViewController {
 
@@ -45,18 +44,13 @@ class SignInVC: UIViewController {
 
     @IBAction func facebookBtnTapped(_ sender: Any) {
         
-        if FBSDKAccessToken.current() != nil {
-            FBSDKLoginManager().logOut()
-            return
-        }
+        let facebookLogin = FBSDKLoginManager()
 
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if error != nil {
                 print("창남 - Unable to login Facebook, Error: \(error)")
-                facebookLogin.logOut()
             } else if result?.isCancelled == true {
                 print("창남 - User canceled Facebook authentication")
-                facebookLogin.logOut()
             } else {
                 print("창남 - Facebook login success")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
