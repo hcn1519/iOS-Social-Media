@@ -23,6 +23,7 @@
 		7E70480F1E4D74F100D44EF0 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E70480E1E4D74F100D44EF0 /* CustomBtn.swift */; };
 		7E8A1B6E1E4DAD46002966EC /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A1B6D1E4DAD46002966EC /* FeedVC.swift */; };
 		7E9443311E517146004CD269 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9443301E517146004CD269 /* CircleView.swift */; };
+		7E9443331E51865F004CD269 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9443321E51865F004CD269 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		7E8A1B6C1E4D9BE2002966EC /* SocialMedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SocialMedia.entitlements; sourceTree = "<group>"; };
 		7E8A1B6D1E4DAD46002966EC /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		7E9443301E517146004CD269 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		7E9443321E51865F004CD269 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		8BEDCF981BB6FEB0654D1378 /* Pods-SocialMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialMedia/Pods-SocialMedia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +167,7 @@
 				7E70480C1E4D73A100D44EF0 /* CustomField.swift */,
 				7E70480E1E4D74F100D44EF0 /* CustomBtn.swift */,
 				7E9443301E517146004CD269 /* CircleView.swift */,
+				7E9443321E51865F004CD269 /* PostCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				7E70480D1E4D73A100D44EF0 /* CustomField.swift in Sources */,
 				7E0928131E4C4F9000336F75 /* AppDelegate.swift in Sources */,
 				7E7048091E4D6F6800D44EF0 /* Constant.swift in Sources */,
+				7E9443331E51865F004CD269 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
