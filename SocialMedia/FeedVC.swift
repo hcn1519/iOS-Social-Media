@@ -48,10 +48,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let post = posts[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell {
-            let post = posts[indexPath.row]
-            print("창남 - \(post.caption)")
+            
+            cell.configureCell(post: post)
             return cell
+            
         } else {
             return UITableViewCell()
         }
